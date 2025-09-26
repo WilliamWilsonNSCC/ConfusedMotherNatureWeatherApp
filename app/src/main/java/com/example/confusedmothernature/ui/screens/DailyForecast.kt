@@ -43,7 +43,7 @@ fun WeeklyDisplay() {
             Image(painter = painterResource(id = R.drawable.snow), contentDescription = "rain")
             Text("Snow")
             Text("3\u2103 High  -10\u2103 Low")
-            Text("Light Snow, Chance of Rain 90%, Amount 3cm,")
+            Text("Light Snow, Chance of Snow 50%, Amount 3cm,")
             Text("Max Winds 15 km/h, Humidity 20%")
             Text("____________________________________________________")
 
@@ -63,7 +63,7 @@ fun WeeklyDisplay() {
             Image(painter = painterResource(id = R.drawable.snow), contentDescription = "rain")
             Text("Snow")
             Text("-2\u2103 High  -13\u2103 Low")
-            Text("Very Light Snow, Chance of Rain 90%, Amount >1cm,")
+            Text("Very Light Snow, Chance of Snow 10%, Amount >1cm,")
             Text("Max Winds 15 km/h, Humidity 20%")
             Text("____________________________________________________")
         }
