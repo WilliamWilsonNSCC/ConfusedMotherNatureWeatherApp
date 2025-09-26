@@ -19,8 +19,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.confusedmothernature.ui.theme.ConfusedMotherNatureTheme
+import com.example.confusedmothernature.ui.screens.CurrentWeather
+import com.example.confusedmothernature.ui.screens.DailyForecast
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +29,9 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ConfusedMotherNatureTheme {
-                Greeting()
+                //Greeting()
+                DailyForecast()
+                //CurrentWeather()
             }
         }
     }
@@ -55,7 +58,7 @@ fun Greeting() {
             horizontalArrangement = Arrangement.SpaceAround,
             modifier = Modifier
                 .background(Color.LightGray)
-                .fillMaxWidth(.75f)
+                .fillMaxWidth(1f)
         ) {
             Text(
                 text = "Hello"
