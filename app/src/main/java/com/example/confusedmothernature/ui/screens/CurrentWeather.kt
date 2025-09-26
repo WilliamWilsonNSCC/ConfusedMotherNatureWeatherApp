@@ -120,9 +120,9 @@ fun WeatherColumn(){
                 Image(painter = painterResource(id = R.drawable.rain_512), contentDescription = "rain")
                 Text("Rain", fontFamily = merriWeatherFamily)
                 Text("10\u2103")
-                Text("Feels like 16\u2103")
+                Text("Feels like 12\u2103")
                 Text("P.O.P 100%")
-                Text("Precipitation 13.4mm")
+                Text("Heavy Rain 13.4mm")
                 Text("Wind SSE 24 km/h")
     }
 }
