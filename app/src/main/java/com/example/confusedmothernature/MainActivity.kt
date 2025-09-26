@@ -30,8 +30,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             ConfusedMotherNatureTheme {
                 //Greeting()
-                DailyForecast()
-                //CurrentWeather()
+                //DailyForecast()
+                CurrentWeather()
             }
         }
     }

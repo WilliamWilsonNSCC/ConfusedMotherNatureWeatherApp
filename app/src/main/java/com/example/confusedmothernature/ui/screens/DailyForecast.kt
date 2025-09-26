@@ -4,7 +4,6 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
@@ -32,62 +31,41 @@ fun WeeklyDisplay() {
             .fillMaxSize()
             .background(Color.Cyan)
     ) {
-        Row(verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.Center,
-            modifier = Modifier
-                .background(Color.Magenta)
-                .fillMaxWidth(1f)
-                .fillMaxHeight(.085f)
-        ){
-            Column(modifier = Modifier
-                .padding(top = 20.dp)){
-                Text("Halifax, NS")
-            }
-        }
         Column(verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
-                .fillMaxWidth(1f)
-                .fillMaxHeight(.875f)
-                .background(Color.LightGray)
-        ){
-            Image(painter = painterResource(id = R.drawable.rain), contentDescription = "rain")
-            Text("Rain")
-            Text("18\u2103 High  8\u2103 Low")
-            Text("Heavy Rain, Chance of Rain 90%, Amount 15mm,")
-            Text("Max Winds 15 km/h, Humidity 20%")
-            Text("____________________________________________________")
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            Image(painter = painterResource(id = R.drawable.rain), contentDescription = "rain")
-            Text("Rain")
-            Text("18\u2103 High  8\u2103 Low")
-            Text("Heavy Rain, Chance of Rain 90%, Amount 15mm,")
-            Text("Max Winds 15 km/h, Humidity 20%")
-            Text("____________________________________________________")
-
-            Spacer(modifier = Modifier.height(30.dp))
-
-            Image(painter = painterResource(id = R.drawable.rain), contentDescription = "rain")
-            Text("Rain")
-            Text("18\u2103 High  8\u2103 Low")
-            Text("Heavy Rain, Chance of Rain 90%, Amount 15mm,")
-            Text("Max Winds 15 km/h, Humidity 20%")
-            Text("____________________________________________________")
-        }
-        Row(verticalAlignment = Alignment.Bottom,
-            modifier = Modifier
-                .background(Color.Magenta)
+                .padding(vertical=40.dp)
                 .fillMaxWidth(1f)
                 .fillMaxHeight(1f)
+                .background(Color.Gray)
         ){
-            Column(modifier = Modifier.padding(horizontal = 100.dp, vertical = 30.dp)){
-                Text("Now")
-            }
-            Column(modifier = Modifier.padding(horizontal = 50.dp, vertical = 30.dp)){
-                Text("Daily")
-            }
+            Text("Tue Nov 25")
+            Image(painter = painterResource(id = R.drawable.snow), contentDescription = "rain")
+            Text("Snow")
+            Text("3\u2103 High  -10\u2103 Low")
+            Text("Light Snow, Chance of Rain 90%, Amount 3cm,")
+            Text("Max Winds 15 km/h, Humidity 20%")
+            Text("____________________________________________________")
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            Text("Wed Nov 26")
+            Image(painter = painterResource(id = R.drawable.rain_heavy), contentDescription = "rain")
+            Text("Rain")
+            Text("7\u2103 High  3\u2103 Low")
+            Text("Heavy Rain, Chance of Rain 90%, Amount 15mm,")
+            Text("Max Winds 15 km/h, Humidity 20%")
+            Text("____________________________________________________")
+
+            Spacer(modifier = Modifier.height(30.dp))
+
+            Text("Thu Nov 27")
+            Image(painter = painterResource(id = R.drawable.snow), contentDescription = "rain")
+            Text("Snow")
+            Text("-2\u2103 High  -13\u2103 Low")
+            Text("Very Light Snow, Chance of Rain 90%, Amount >1cm,")
+            Text("Max Winds 15 km/h, Humidity 20%")
+            Text("____________________________________________________")
         }
     }
 }
