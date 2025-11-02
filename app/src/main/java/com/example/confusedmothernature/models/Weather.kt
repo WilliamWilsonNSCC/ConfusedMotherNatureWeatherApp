@@ -1,37 +1,65 @@
 package com.example.confusedmothernature.models
 
-data class Weather(
-    val current: Current,
-    val forecast: List<Forecast>
-) {
-    companion object
-}
+import com.google.gson.annotations.SerializedName
+import kotlinx.serialization.SerialName
 
+data class Weather(
+    val location: Location,
+    val current: Current,
+    val forecast: ForecastContainer
+)
+
+data class Location(
+    val name: String,
+    val region: String,
+    val country: String,
+    val lat: Double,
+    val lon: Double
+)
 data class Current(
-    //Weather Image
-    val currentImage: Int,
-    val curCondition: String,
-    val temperature: Int,
-    val feelLike: Int,
-    val precipitationPossibility: Int,
+    val condition: Condition,
+    val temp_c: Double,
+    val feelslike_c: Double,
+    val feelslike_f: Double,
+    val chance_of_rain: Double,
+    val chance_of_snow: Double,
     val precipitationType: String,
-    val precipitationAmount: Int,
-    val curWindDir: String,
-    val curWindSpeed: Int,
+    val precip_in: Double,
+    val precip_mm: Double,
+    val wind_dir: String,
+    val wind_kph: Double
 
 )
 
-data class Forecast(
+data class ForecastDay(
+    val day: DayDetails,
     val date: String,
-    //Image
-    val forecastImage: Int,
-    val condition: String,
-    val tempHigh: Int,
-    val tempLow: Int,
-    val precipitationType: String,
-    val precipitationPossibility: Int,
-    val precipitationAmount: Int,
-    val windSpeed: Int,
-    val humidity: Int
+)
 
+data class DayDetails(
+    val condition: Condition,
+    val maxtemp_c: Double,
+    val mintemp_c: Double,
+    val precipitationType: String,
+    val chance_of_rain: Double,
+    val chance_of_snow: Double,
+    val precip_in: Double,
+    val precip_mm: Double,
+    val wind_kph: Double,
+    val humidity: Double
+
+)
+
+data class ForecastContainer(
+    @SerializedName("forecastday")
+    val forecastday: List<ForecastDay>
+)
+
+data class Conditions(
+    val condition: Condition
+)
+
+data class Condition(
+    val icon: String,
+    val text: String
 )
