@@ -63,13 +63,6 @@ fun CurrentWeatherDisplay(weather: Weather){
             .padding(24.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        Text(
-            text = location.name,
-            style = MaterialTheme.typography.headlineLarge,
-            color = MaterialTheme.colorScheme.primary
-        )
-        HorizontalDivider(Modifier.padding(vertical = 8.dp))
-
         Row(
             horizontalArrangement = Arrangement.Center,
             modifier = Modifier.fillMaxWidth()

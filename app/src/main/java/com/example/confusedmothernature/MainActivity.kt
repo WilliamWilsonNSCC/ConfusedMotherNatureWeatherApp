@@ -20,6 +20,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -40,7 +41,6 @@ import com.google.accompanist.permissions.rememberPermissionState
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.Priority
 import com.google.android.gms.tasks.CancellationTokenSource
-import kotlin.getValue
 
 class MainActivity : ComponentActivity() {
 
@@ -62,8 +62,7 @@ class MainActivity : ComponentActivity() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DisplayUI(mainViewModel: MainViewModel){
-
-
+    val weather by mainViewModel.weather.collectAsState()
     val navController = rememberNavController()
     var selectedItem by remember { mutableIntStateOf(0) }
 
@@ -75,7 +74,7 @@ fun DisplayUI(mainViewModel: MainViewModel){
                     titleContentColor = MaterialTheme.colorScheme.primary
                 ),
                 title = {
-                    Text("Halifax, Nova Scotia")
+                    Text(text = weather?.location?.let { "${it.name}, ${it.region}" } ?: "Loading Location...")
                 }
             )
         },
@@ -96,7 +95,7 @@ fun DisplayUI(mainViewModel: MainViewModel){
                     },
                     selected = selectedItem == 0,
                     onClick = {
-                        selectedItem = 1
+                        selectedItem = 0
                         navController.navigate("current")
                     }
                 )
@@ -145,8 +144,6 @@ fun GetLocation(mainViewModel: MainViewModel) {
     val permissionState = rememberPermissionState(Manifest.permission.ACCESS_FINE_LOCATION)
 
     if (permissionState.status.isGranted) {
-        Log.i("TESTING", "Hurray, permission granted!")
-
         // Get Location
         val currentContext = LocalContext.current
         val fusedLocationClient = LocationServices.getFusedLocationProviderClient(currentContext)
@@ -157,19 +154,9 @@ fun GetLocation(mainViewModel: MainViewModel) {
             ) == PackageManager.PERMISSION_GRANTED)
         {
             val cancellationTokenSource = CancellationTokenSource()
-
-            Log.i("TESTING", "Requesting location...")
-
             fusedLocationClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, cancellationTokenSource.token)
                 .addOnSuccessListener { location ->
                     if (location != null) {
-                        val lat = location.latitude.toString()
-                        val lng = location.longitude.toString()
-
-                        Log.i("TESTING", "Success: $lat $lng")
-
-                        val coordinates = "$lat,$lng"
-
                         mainViewModel.onLocationReceived(location)
                     }
                     else {

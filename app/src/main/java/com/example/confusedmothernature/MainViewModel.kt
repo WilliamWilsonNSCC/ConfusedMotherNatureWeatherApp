@@ -48,6 +48,7 @@ class MainViewModel: ViewModel() {
                    aqi = "no"
                )
                _weather.value = response
+               Log.i("Testing", response.toString())
            }catch(e: Exception){
                Log.e("WEATHER_API_ERROR", "Failed to fetch weather data: ${e.message}", e)
                _weather.value = null

@@ -41,12 +41,6 @@ fun WeeklyDisplay(mainViewModel: MainViewModel) {
             .padding(horizontal = 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = weather?.location?.name ?: "Daily Forecast",
-            style = MaterialTheme.typography.headlineMedium,
-            modifier = Modifier.padding(vertical = 16.dp)
-        )
-
         LazyColumn(
             verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier.fillMaxSize()
@@ -91,11 +85,11 @@ fun ForecastItem(forecastDay: ForecastDay) {
         Text(text = dayDetails.condition.text, style = MaterialTheme.typography.titleLarge)
 
         // Other forecast data fields:
-        Text(text = "Rain Chance: ${dayDetails.chance_of_rain}%", style = MaterialTheme.typography.bodyMedium)
-        Text(text = "Snow Chance: ${dayDetails.chance_of_snow}%", style = MaterialTheme.typography.bodyMedium)
-        Text(text = "Wind: ${dayDetails.wind_kph.format(0)} km/h", style = MaterialTheme.typography.bodyMedium)
+        Text(text = "Rain Chance: ${dayDetails.daily_chance_of_rain}%", style = MaterialTheme.typography.bodyMedium)
+        Text(text = "Snow Chance: ${dayDetails.daily_chance_of_snow}%", style = MaterialTheme.typography.bodyMedium)
+        Text(text = "Wind: ${dayDetails.maxwind_kph.format(0)} km/h", style = MaterialTheme.typography.bodyMedium)
         Text(text = "Humidity: ${dayDetails.humidity}%", style = MaterialTheme.typography.bodyMedium)
-        Text(text = "Precipitation: ${dayDetails.precip_mm.format(1)} mm", style = MaterialTheme.typography.bodyMedium)
+        Text(text = "Precipitation: ${dayDetails.totalprecip_mm.format(1)} mm", style = MaterialTheme.typography.bodyMedium)
     }
 }
 

@@ -41,11 +41,11 @@ data class DayDetails(
     val maxtemp_c: Double,
     val mintemp_c: Double,
     val precipitationType: String,
-    val chance_of_rain: Double,
-    val chance_of_snow: Double,
-    val precip_in: Double,
-    val precip_mm: Double,
-    val wind_kph: Double,
+    val daily_chance_of_rain: Double,
+    val daily_chance_of_snow: Double,
+    val totalprecip_in: Double,
+    val totalprecip_mm: Double,
+    val maxwind_kph: Double,
     val humidity: Double
 
 )
